@@ -1,7 +1,5 @@
 package com.dinesh.ficasso;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 /**
@@ -10,7 +8,7 @@ import android.widget.ImageView;
 
 public class Ficasso {
 
-    public static Ficasso ourInstance = null;
+    public static Ficasso ourInstance = new Ficasso();
 
     public static int load;
     public static  int defaultImage;
@@ -25,16 +23,13 @@ public class Ficasso {
     }
 
 
-    public Ficasso with(Context context){
-        return this.with(context);
-    }
-
     public static int getLoad() {
         return load;
     }
 
-    public static void load(int imageID) {
+    public Ficasso load(int imageID) {
         Ficasso.load = imageID;
+        return ourInstance;
     }
 
 
@@ -42,13 +37,14 @@ public class Ficasso {
         return defaultImage;
     }
 
-    public static void defaultImage(int defaultImage) {
+    public Ficasso defaultImage(int defaultImage) {
             Ficasso.defaultImage = defaultImage;
+            return ourInstance;
     }
 
 
 
-    public static void into(ImageView into) {
+    public Ficasso into(ImageView into) {
         Ficasso.into = into;
 
         if(getLoad() != 0) {
@@ -57,6 +53,7 @@ public class Ficasso {
             Ficasso.into.setImageResource(getDefaultImage());
         }
 
+        return ourInstance;
     }
 
 

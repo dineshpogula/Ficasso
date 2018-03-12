@@ -18,22 +18,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.image);
 
 
-        Ficasso.getInstance().load(R.drawable.natureimage4);
-        Ficasso.getInstance().defaultImage(R.drawable.natureimage2);
-        Ficasso.getInstance().into(imageView);
+        Ficasso.getInstance().load(R.drawable.natureimage1).defaultImage(R.drawable.natureimage3).into(imageView);
 
-
-        /*mGridView = findViewById(R.id.gridView);
-        Utils imageItems = new Utils();
-        CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, imageItems.items);
-        mGridView.setAdapter(customAdapter);
-
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Image was selected", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }*/
     }
 }
