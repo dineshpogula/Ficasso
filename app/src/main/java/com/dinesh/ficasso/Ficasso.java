@@ -1,8 +1,7 @@
 package com.dinesh.ficasso;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 /**
@@ -12,53 +11,55 @@ import android.widget.ImageView;
 public class Ficasso {
 
     public static Ficasso ourInstance = null;
-    final Bitmap.Config defaultConfigBitmap;
 
+    public static int load;
+    public static  int defaultImage;
+
+
+
+    public static ImageView into;
 
 
     public static Ficasso getInstance() {
         return ourInstance;
     }
 
-    private Ficasso(Bitmap.Config defaultConfigBitmap) {
-        this.defaultConfigBitmap =defaultConfigBitmap;
-
-    }
-
-
-    public Ficasso error(int errorDrawable){
-        if (errorDrawable == 0) {
-            throw new IllegalArgumentException("Error image may not be null.");
-        }
-        return this.error(errorDrawable);
-    }
 
     public Ficasso with(Context context){
         return this.with(context);
     }
 
-
-    public Ficasso load(String path){
-        if (path == null) {
-           return new Ficasso(defaultConfigBitmap);
-        }
-        if (path.trim().length() == 0) {
-            throw new IllegalArgumentException("Path must not be empty.");
-        }
-        return this.load(String.valueOf(Uri.parse(path)));
+    public static int getLoad() {
+        return load;
     }
 
-    public RequestResponse load(int  resourceID){
-        if (resourceID == 0) {
-            throw new IllegalArgumentException("Path must not be empty.");
+    public static void load(int imageID) {
+        Ficasso.load = imageID;
+    }
+
+
+    public static int getDefaultImage() {
+        return defaultImage;
+    }
+
+    public static void defaultImage(int defaultImage) {
+            Ficasso.defaultImage = defaultImage;
+    }
+
+
+
+    public static void into(ImageView into) {
+        Ficasso.into = into;
+
+        if(getLoad() != 0) {
+            Ficasso.into.setImageResource(getLoad());
+        } else {
+            Ficasso.into.setImageResource(getDefaultImage());
         }
-        return new RequestResponse(this, null, resourceID);
+
     }
 
-    public Ficasso into(ImageView imageView){
 
-        return this.into(imageView);
-    }
 
 }
 

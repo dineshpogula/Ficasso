@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 public class MainActivity extends AppCompatActivity {
 
     private GridView mGridView;
@@ -16,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.image);
 
 
-        Ficasso.getInstance().load(R.drawable.natureimage5);
-       // Picasso.with(this).load().into();
+        Ficasso.getInstance().load(R.drawable.natureimage4);
+        Ficasso.getInstance().defaultImage(R.drawable.natureimage2);
+        Ficasso.getInstance().into(imageView);
+
 
         /*mGridView = findViewById(R.id.gridView);
         Utils imageItems = new Utils();
