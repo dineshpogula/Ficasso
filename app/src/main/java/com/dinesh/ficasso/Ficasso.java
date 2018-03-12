@@ -8,55 +8,38 @@ import android.widget.ImageView;
 
 public class Ficasso {
 
-    public static Ficasso ourInstance = new Ficasso();
+    private static Ficasso ourInstance = new Ficasso();
 
-    public static int load;
-    public static  int defaultImage;
-
-
-
-    public static ImageView into;
+    public  static int load;
+    public  int defaultImage;
 
 
-    public static Ficasso getInstance() {
+
+    public  static Ficasso load(int targetImage) {
+        load = targetImage;
         return ourInstance;
     }
 
 
-    public static int getLoad() {
-        return load;
-    }
 
-    public Ficasso load(int imageID) {
-        Ficasso.load = imageID;
-        return ourInstance;
-    }
-
-
-    public static int getDefaultImage() {
-        return defaultImage;
-    }
-
-    public Ficasso defaultImage(int defaultImage) {
-            Ficasso.defaultImage = defaultImage;
+    public Ficasso defaultImage(int imageID) {
+            defaultImage = imageID;
             return ourInstance;
     }
 
 
 
-    public Ficasso into(ImageView into) {
-        Ficasso.into = into;
+    public Ficasso into(ImageView intoImage) {
 
-        if(getLoad() != 0) {
-            Ficasso.into.setImageResource(getLoad());
+
+        if (load == 0){
+            intoImage.setImageResource(defaultImage);
         } else {
-            Ficasso.into.setImageResource(getDefaultImage());
+            intoImage.setImageResource(load);
         }
 
         return ourInstance;
     }
-
-
 
 }
 

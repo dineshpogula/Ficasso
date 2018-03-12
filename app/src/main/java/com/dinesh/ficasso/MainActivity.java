@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.image);
 
 
-        Ficasso.getInstance().load(R.drawable.natureimage1).defaultImage(R.drawable.natureimage3).into(imageView);
+        Ficasso.load(0).defaultImage(R.drawable.natureimage1).into(imageView);
 
     }
 }
